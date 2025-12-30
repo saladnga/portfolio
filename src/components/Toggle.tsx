@@ -13,15 +13,16 @@ const Toggle = () => {
 
   return (
     <button onClick={() => setDark((v) => !v)}>
-      {dark ? (
-        <div className="border rounded-lg bg-purple-500 border-purple-500 cursor-pointer hover:opacity-80 py-3 px-3">
-          <Moon className="text-white" size={18} />
-        </div>
-      ) : (
-        <div className="border rounded-lg bg-yellow-500 border-yellow-500 cursor-pointer hover:opacity-80 py-3 px-3">
-          <Sun className="text-white" size={18} />
-        </div>
-      )}
+      <div
+        className="border rounded-full bg-accent p-2 md:p-4 cursor-pointer hover:opacity-85 backdrop-blur-sm border-white/20 dark:border-white/10
+        shadow-sm"
+      >
+        {dark ? (
+          <Moon className="text-white" />
+        ) : (
+          <Sun className="text-white" />
+        )}
+      </div>
     </button>
   );
 };

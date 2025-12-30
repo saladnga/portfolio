@@ -8,23 +8,23 @@ import {
 } from "@react-three/drei";
 
 function Model() {
-  const { scene } = useGLTF("/gundam.glb");
-  scene.rotation.y = Math.PI;
+  const { scene } = useGLTF("/Astronaut.glb");
+  // scene.rotation.y = Math.PI;
 
   return <primitive object={scene} scale={1.5} />;
 }
 
-const Gundam = () => {
+const Mascot = () => {
   return (
-    <div className="flex justify-center items-center mx-auto max-w-5xl">
-      <div>
-        <div style={{ width: "500px", height: "500px" }}>
+    <div className="flex justify-center items-center mx-auto w-1/2 md:max-w-5xl">
+      <div className="w-full">
+        <div className="w-full aspect-square max-w-[300px] md:max-w-[500px] mx-auto">
           <Canvas>
-            <ambientLight intensity={0.5} />
+            <ambientLight intensity={2} />
             <directionalLight position={[5, 5, 5]} intensity={1} />
             <Environment preset="city" environmentIntensity={0.2} />
 
-            <Bounds fit clip margin={1.2}>
+            <Bounds fit clip margin={1}>
               <Center>
                 <Model />
               </Center>
@@ -46,4 +46,4 @@ const Gundam = () => {
   );
 };
 
-export default Gundam;
+export default Mascot;

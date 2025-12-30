@@ -14,13 +14,13 @@ export default function Experiences() {
     <Accordion
       type="single"
       collapsible
-      className="w-1/2 text-left mx-auto mt-20"
+      className="w-full md:w-3/4 lg:w-1/2 text-left mx-auto mt-10 md:mt-20 px-4 md:px-0"
     >
       <AccordionItem value="item-1">
         <AccordionTrigger>
           <div className="flex justify-center items-center gap-3 cursor-pointer">
-            <img src={isods} alt="" height={80} width={80} />
-            <div className="flex flex-col text-lg">
+            <img src={isods} alt="ISODS" className="h-20 w-20" />
+            <div className="flex flex-col md:text-lg text-md">
               <div className="font-bold">
                 The International Society of Data Scientists (ISODS)
               </div>
@@ -29,7 +29,7 @@ export default function Experiences() {
             </div>
           </div>
         </AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-lg cursor-pointer">
+        <AccordionContent className="flex flex-col gap-4 text-md md:text-lg cursor-pointer">
           <p>
             • Optimized an AI-powered chatbot using JavaScript/TypeScript
             frontend and FastAPI and LangChain backend, improving UI
@@ -61,15 +61,15 @@ export default function Experiences() {
       <AccordionItem value="item-2">
         <AccordionTrigger>
           <div className="flex justify-center items-center gap-3 cursor-pointer">
-            <img src={naucode} alt="" height={80} width={80} />
-            <div className="flex flex-col text-lg">
+            <img src={naucode} alt="NAUCode" className="h-20 w-20" />
+            <div className="flex flex-col  md:text-lg text-md">
               <div className="font-bold">NAUCode</div>
               <div>Software Engineering Intern</div>
               <div>May. 2025 - Oct. 2025</div>
             </div>
           </div>
         </AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-lg">
+        <AccordionContent className="flex flex-col gap-4  md:text-lg text-md">
           <p>
             • Developed reusable, component-driven UIs for two
             productivity-focused products using React, TypeScript, TailwindCSS,
@@ -96,8 +96,8 @@ export default function Experiences() {
       </AccordionItem>
       <AccordionItem value="item-3">
         <AccordionTrigger>
-          <div className="flex justify-center items-center gap-3 text-lg cursor-pointer">
-            <img src={codepath} alt="" height={80} width={80} />
+          <div className="flex justify-center items-center gap-3  md:text-lg text-md cursor-pointer">
+            <img src={codepath} alt="CodePath" className="h-20 w-20" />
             <div className="flex flex-col">
               <div className="font-bold">CodePath</div>
               <div>Student Fellow (WEB102 and TIP102)</div>
@@ -105,7 +105,7 @@ export default function Experiences() {
             </div>
           </div>
         </AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-lg">
+        <AccordionContent className="flex flex-col gap-4  md:text-lg text-md">
           <p>
             • Built full-stack web applications using React, TypeScript, Flask,
             Tailwind CSS, and Supabase.
@@ -128,8 +128,13 @@ export default function Experiences() {
       </AccordionItem>
       <AccordionItem value="item-4">
         <AccordionTrigger>
-          <div className="flex justify-center items-center gap-3 text-lg cursor-pointer">
-            <img src={gdsc} alt="" height={80} width={80} />
+          <div className="flex justify-center items-center gap-3  md:text-lg text-md cursor-pointer">
+            <img
+              src={gdsc}
+              alt="Google Developer Group - Hanoi University of Science and
+                Technology"
+              className="h-20 w-20"
+            />
             <div className="flex flex-col">
               <div className="font-bold">
                 Google Developer Group - Hanoi University of Science and
@@ -140,7 +145,7 @@ export default function Experiences() {
             </div>
           </div>
         </AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-lg">
+        <AccordionContent className="flex flex-col gap-4  md:text-lg text-md">
           <p>
             • Co-developed the official homepage for a{" "}
             <span className="font-bold">100+ member academic community</span>{" "}
