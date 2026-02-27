@@ -6,13 +6,25 @@
   --color-border: oklch(90% 0 0);
   --color-ring: oklch(80% 0 0);
 
-  --color-background-dark: oklch(20% 0 0);
+  --color-background-dark: #121212;
   --color-foreground-dark: oklch(85% 0 0);
   --color-border-dark: oklch(20% 0 0);
   --color-ring-dark: oklch(30% 0 0);
 
   --color-accent: oklch(70% 0.18 50);
   --color-accent-dark: oklch(60% 0.2 270);
+
+  /* Accordion animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  /* Badge colors */
+  --color-primary: #ea580c;
+  --color-primary-foreground: #ffffff;
+  
+  /* Light mode border */
+  --color-badge-border: #c2410c;
+  --color-badge-border-dark: #9a3412;
 }
 
 .dark {
@@ -21,11 +33,30 @@
   --color-border: var(--color-border-dark);
   --color-ring: var(--color-ring-dark);
   --color-accent: var(--color-accent-dark);
+  --color-badge-border: #ea580c;
+  --color-badge-border-dark: #7c2d12;
+}
+
+.dark body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+
+  opacity: 0.03;
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
+  background-image: radial-gradient(
+    circle at center,
+    rgba(255, 244, 220, 0.02),
+    transparent 70%
+  );
 }
 
 @keyframes accordion-down {
@@ -46,56 +77,6 @@ body {
   }
 }
 
-#root {
-  margin: 0 auto;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-@layer utilities {
-  .animate-accordion-down {
-    animation: accordion-down 0.2s ease-out;
-  }
-  .animate-accordion-up {
-    animation: accordion-up 0.2s ease-out;
-  }
-}
-
 @keyframes blink {
   0%,
   50%,
@@ -106,8 +87,4 @@ body {
   75% {
     opacity: 0;
   }
-}
-
-.animate-blink {
-  animation: blink 4s step-start infinite;
 }

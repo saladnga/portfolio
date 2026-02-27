@@ -2,180 +2,105 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Intro from "./components/Intro";
 import Projects from "./components/Projects";
-import Mascot from "./components/Mascot";
-import { Separator } from "@/components/ui/separator";
-import Research from "./components/Research";
 import Experiences from "./components/Experiences";
-import VariableProximity from "./components/ui/VariableProximity";
-import { useRef } from "react";
-import { useState, useEffect } from "react";
-import Toggle from "./components/Toggle";
+import Education from "./components/Education";
+import Skills from "./components/Skills";
+import Awards from "./components/Awards";
+import Contacts from "./components/Contact";
 import "./App.css";
 import "./index.css";
+import { GitHubCalendar } from "react-github-calendar";
+import { Link2 } from "lucide-react";
 
 export default function App() {
-  const containerRef = useRef<HTMLElement>(null);
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  const formattedTime = time.toLocaleTimeString("en-US", {
-    timeZone: "America/Chicago",
-    hour12: false,
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
-  const formattedDate = time.toLocaleDateString("en-US", {
-    timeZone: "America/Chicago",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-
-  const [hours, minutes] = formattedTime.split(":");
-
   return (
     <div className="bg-background text-foreground min-h-screen transition-colors duration-300">
       <div
-        className="text-center mx-auto h-screen overflow-y-scroll snap-y snap-mandatory"
+        className="text-center mx-auto h-screen overflow-y-scroll"
         id="scroll-container"
       >
         <Navigation />
 
-        <div
-          ref={containerRef as React.RefObject<HTMLDivElement>}
-          style={{ position: "relative" }}
-          className="w-full px-4 md:px-10 py-6 md:py-0 snap-start"
-        >
-          {/* TITLE */}
-          <div className="flex justify-center w-full">
-            <VariableProximity
-              label={"VU'S PORTFOLIO"}
-              className="
-        variable-proximity-demo
-        text-4xl md:text-7xl
-        mt-4 md:mt-10
-        font-extrabold
-        w-full
-        text-center
-        md:whitespace-nowrap
-      "
-              fromFontVariationSettings="'wght' 800, 'opsz' 9"
-              toFontVariationSettings="'wght' 1500, 'opsz' 40"
-              containerRef={containerRef}
-              radius={100}
-              falloff="linear"
+        <div className="pt-20 pb-10 md:pt-30 snap-start flex flex-col justify-center px-4 md:px-0">
+          <div className="mx-auto max-w-5xl w-full md:w-3/4 lg:w-1/2">
+            <a href="https://www.linkedin.com/in/vuhoang1604/" target="_blank">
+              <img
+                src="/profile.jpg"
+                className="rounded-full w-32 md:w-62 float-none md:float-right mx-auto md:mx-0 md:ml-10 mb-6 hover:scale-101 transition-all"
+              />
+            </a>
+
+            <Intro />
+          </div>
+
+          <br />
+          <br />
+          <div className="w-full md:w-3/4 lg:w-1/2 mx-auto px-4 md:px-0">
+            <div className="mb-5 text-base md:text-lg flex flex-row justify-between items-center">
+              <p>My GitHub Contributions</p>
+              <a
+                href="https://github.com/saladnga"
+                className="flex gap-2 hover:text-white hover:underline text-sm md:text-base"
+              >
+                <p>View on Github</p>
+                <Link2 className="w-4 h-4 md:w-5 md:h-5" />
+              </a>
+            </div>
+
+            <GitHubCalendar
+              username="saladnga"
+              colorScheme="dark"
+              theme={{
+                light: ["#ffedd5", "#fed7aa", "#fdba74", "#fb923c", "#ea580c"],
+                dark: ["#1c1917", "#78350f", "#c2410c", "#ea580c", "#fb923c"],
+              }}
             />
           </div>
-
-          {/* MOBILE: time ↔ toggle */}
-          <div className="flex md:hidden justify-between items-center mt-4">
-            <div className="flex flex-col text-xs">
-              <div className="flex items-center">
-                <span>{hours}</span>
-                <span className="mx-0.5 animate-blink">:</span>
-                <span>{minutes}</span>
-                <span className="ml-2">ALABAMA, USA</span>
-              </div>
-              <div className="opacity-80">{formattedDate}</div>
-            </div>
-
-            <Toggle />
-          </div>
-
-          {/* DESKTOP GRID */}
-          <div className="hidden md:grid grid-cols-3 items-center mt-6">
-            {/* TIME */}
-            <div className="flex flex-col text-lg">
-              <div className="flex items-center">
-                <span>{hours}</span>
-                <span className="mx-0.5 animate-blink">:</span>
-                <span>{minutes}</span>
-                <span className="ml-2">ALABAMA, USA</span>
-              </div>
-              <div className="text-sm opacity-80 flex items-center">
-                {formattedDate}
-              </div>
-            </div>
-            <div /> {/* spacer */}
-            {/* TOGGLE */}
-            <div className="flex justify-end">
-              <Toggle />
-            </div>
-          </div>
         </div>
 
         <div
-          className="md:py-20 snap-start flex flex-col justify-center"
-          id="about"
-        >
-          <div className="text-4xl font-semibold mb-20 tracking-widest">
-            ABOUT
-          </div>
-          <div className="flex flex-col md:flex-row justify-center items-center mx-auto max-w-5xl gap-10">
-            <Mascot />
-            <div className="flex-1 md:pr-30 ">
-              <Intro />
-            </div>
-          </div>
-        </div>
-
-        <div className="w-1/2 mx-auto">
-          <Separator className="my-8 bg-foreground" />
-        </div>
-
-        <div
-          className="md:py-20 snap-start flex flex-col justify-center"
-          id="experience"
-        >
-          <div className="text-4xl font-semibold mb-10 tracking-widest">
-            EXPERIENCE
-          </div>
-          <Experiences />
-        </div>
-
-        <div className="w-1/2 mx-auto">
-          <Separator className="my-8 bg-foreground" />
-        </div>
-
-        <div
-          className="md:py-20 snap-start flex flex-col justify-center"
+          className="py-10 md:py-10 snap-start flex flex-col justify-center"
           id="projects"
         >
-          <div className="text-4xl font-semibold mb-10 tracking-widest">
-            PROJECTS
-          </div>
           <Projects />
         </div>
 
-        <div className="w-1/2 mx-auto">
-          <Separator className="my-8 bg-foreground" />
+        <div
+          className="py-10 md:py-10 snap-start flex flex-col justify-center"
+          id="skills"
+        >
+          <Skills />
         </div>
 
         <div
-          className="md:py-20 snap-start flex flex-col justify-center"
-          id="research"
+          className="py-10 md:py-10 snap-start flex flex-col justify-center"
+          id="experience"
         >
-          <div className="text-4xl font-semibold mb-10 tracking-widest">
-            RESEARCH
-          </div>
-          <Research />
-
-          <div className="pt-20 w-1/2 mx-auto">
-            <Separator className="my-8 bg-foreground" />
-          </div>
-
-          <Footer />
+          <Experiences />
         </div>
+
+        <div
+          className="py-10 md:py-10 snap-start flex flex-col justify-center"
+          id="education"
+        >
+          <Education />
+        </div>
+
+        <div
+          className="py-10 md:py-10 snap-start flex flex-col justify-center"
+          id="awards"
+        >
+          <Awards />
+        </div>
+
+        <div
+          className="py-10 md:py-10 snap-start flex flex-col justify-center"
+          id="contact"
+        >
+          <Contacts />
+        </div>
+
+        <Footer />
       </div>
     </div>
   );

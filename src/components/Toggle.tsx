@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 
 const Toggle = () => {
-  const [dark, setDark] = useState(
-    () => localStorage.getItem("theme") === "dark"
-  );
+  const [dark, setDark] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme ? savedTheme === "dark" : true;
+  });
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
@@ -12,16 +13,25 @@ const Toggle = () => {
   }, [dark]);
 
   return (
-    <button onClick={() => setDark((v) => !v)}>
-      <div
-        className="border rounded-full bg-accent p-2 md:p-4 cursor-pointer hover:opacity-85 backdrop-blur-sm border-white/20 dark:border-white/10
-        shadow-sm"
-      >
-        {dark ? (
-          <Moon className="text-white" />
-        ) : (
-          <Sun className="text-white" />
-        )}
+    <button
+      onClick={() => setDark((v) => !v)}
+      className="w-6 h-6 relative transition-all duration-300"
+    >
+      <div className="cursor-pointer">
+        <Sun
+          className={`absolute inset-0 transition-all duration-300 ${
+            dark
+              ? "rotate-90 scale-0 opacity-0"
+              : "rotate-0 scale-100 opacity-100"
+          }`}
+        />
+        <Moon
+          className={`absolute inset-0 transition-all duration-300 ${
+            dark
+              ? "rotate-0 scale-100 opacity-100"
+              : "-rotate-90 scale-0 opacity-0"
+          }`}
+        />
       </div>
     </button>
   );
