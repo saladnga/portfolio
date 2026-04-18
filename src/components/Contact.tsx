@@ -4,6 +4,7 @@ import {
   GitHubLogoIcon,
   EnvelopeClosedIcon,
   TwitterLogoIcon,
+  DiscordLogoIcon,
 } from "@radix-ui/react-icons";
 
 const socials = [
@@ -21,6 +22,11 @@ const socials = [
     icon: <TwitterLogoIcon />,
     username: "saladnga4",
     link: "https://x.com/saladnga4",
+  },
+  {
+    icon: <DiscordLogoIcon />,
+    username: "@saladnga",
+    link: "https://discord.com/",
   },
   {
     icon: <EnvelopeClosedIcon />,
@@ -58,7 +64,9 @@ export default function Contacts() {
                 <a href={social.link} target="_blank" rel="noopener noreferrer">
                   <div className="text-base md:text-lg flex justify-center items-center gap-2">
                     {social.icon}
-                    <span className="text-xs md:text-sm">{social.username}</span>
+                    <span className="text-xs md:text-sm">
+                      {social.username}
+                    </span>
                   </div>
                 </a>
               </Badge>

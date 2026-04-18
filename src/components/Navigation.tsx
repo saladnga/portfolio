@@ -37,7 +37,7 @@ const Navigation = () => {
   return (
     <div
       className="
-        fixed top-1 left-1/2 -translate-x-1/2 z-50
+        fixed top-3 left-1/2 -translate-x-1/2 z-50
         flex justify-between items-center px-6 md:px-5 py-1 w-auto rounded-xl
         backdrop-blur-sm
         bg-white/10 dark:bg-white/5
@@ -47,8 +47,11 @@ const Navigation = () => {
     >
       <div className="flex-1" />
       <div className="flex justify-center gap-3 md:gap-5">
-        <div className="flex flex-col justify-center items-center px-2 rounded-lg font-semibold">
-          <div className="flex flex-col justify-center items-center rounded-lg font-semibold pointer-events-none">
+        <div className="flex flex-col justify-center items-center px-2 rounded-lg font-semibold pointer-events-none">
+          <p className="text-sm text-orange-500 font-['Doto',sans-serif] font-extrabold">
+            CT
+          </p>
+          <div className="flex flex-col justify-center items-center rounded-lg font-semibold">
             <div className="flex items-center justify-center gap-1">
               <span className="text-xs text-orange-500 font-['Doto',sans-serif] font-extrabold">
                 {hours}
@@ -60,9 +63,6 @@ const Navigation = () => {
                 {minutes}
               </span>
             </div>
-            <p className="text-xs text-orange-500 font-['Doto',sans-serif] font-extrabold">
-              CST
-            </p>
           </div>
         </div>
 
