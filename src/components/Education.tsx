@@ -14,7 +14,8 @@ const education = [
     years: "2024 - 2026",
     logo: troy,
     url: "https://www.troy.edu/",
-    imageClass: "h-15 w-15 rounded-full",
+    imageClass:
+      "md:h-15 md:w-15 h-12 w-12 min-w-12 min-h-12 object-cover rounded-full shrink-0 hover:scale-105 transition",
   },
   {
     school: "Hanoi University of Science and Technology",
@@ -22,7 +23,8 @@ const education = [
     years: "2022 - 2024",
     logo: hust,
     url: "https://hust.edu.vn/en/",
-    imageClass: "h-15 w-10 ml-3 mr-2",
+    imageClass:
+      "md:h-15 md:w-10 h-12 w-8 md:ml-3 md:mr-2 ml-2 object-cover shrink-0",
   },
   {
     school: "Vinschool",
@@ -30,7 +32,8 @@ const education = [
     years: "2019 - 2022",
     logo: vin,
     url: "https://vinschool.edu.vn/en/introduction/about-vinschool/",
-    imageClass: "h-15 w-15 rounded-full",
+    imageClass:
+      "md:h-15 md:w-15 h-12 w-12 min-w-12 min-h-12 object-cover rounded-full shrink-0 hover:scale-105 transition",
   },
 ];
 

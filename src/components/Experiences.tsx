@@ -78,7 +78,7 @@ export default function Experiences() {
                     <img
                       src={experience.company_thumbnail}
                       alt={experience.company_name}
-                      className="h-15 w-15 rounded-full hover:scale-105 transition"
+                      className="md:h-15 md:w-15 h-12 w-12 min-w-12 min-h-12 object-cover rounded-full shrink-0 hover:scale-105 transition"
                     />
                   </a>
 
