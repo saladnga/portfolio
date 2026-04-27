@@ -25,7 +25,7 @@ const experiences = [
     time: "Mar. 2025 - Present",
     participation:
       "Built and optimized an AI-powered chatbot (JS/TS, FastAPI, LangChain), developed automated Vietnamese legal document extraction and semantic search, and contributed to ICITE 2025 research on multi-agent medical QA with quantized LLMs.",
-    url: "https://portal.isods.org/",
+    url: "https://ai.isods.org/",
   },
   {
     company_thumbnail: nau,
