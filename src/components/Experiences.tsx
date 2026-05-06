@@ -12,7 +12,7 @@ import cbi from "../assets/experiences/cbi-logo.jpg";
 const experiences = [
   {
     company_thumbnail: cbi,
-    position: "Incoming Research Software Engineer Intern",
+    position: "Incoming Research Software Engineer",
     company_name: "Conrad Blucher Institute for Surveying and Science",
     time: "May. 2026 - Present",
     participation: "Data Quality Team.",
