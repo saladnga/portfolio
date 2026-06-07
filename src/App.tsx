@@ -11,6 +11,7 @@ import Contact from "./components/Contact";
 import "./App.css";
 import { GitHubCalendar } from "react-github-calendar";
 import { Link2 } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 
 const calendarTheme = {
   light: ["#e0f0fa", "#a8d4ef", "#5ab1e3", "#1a8fce", "#0970a4"],
@@ -36,6 +37,7 @@ export default function App() {
 
   return (
     <div className="bg-background text-foreground min-h-screen transition-colors duration-300">
+      <Analytics />
       <div
         className="text-center mx-auto h-screen overflow-y-scroll"
         id="scroll-container"
