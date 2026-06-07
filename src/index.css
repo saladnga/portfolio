@@ -1,13 +1,63 @@
 :root {
-  /* font-family: "Tomorrow", sans-serif; */
-  font-family: "Figtree", sans-serif;
-  line-height: 1.5;
+  font-family: "Helvetica Neue", "Open Sans", sans-serif;
   font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.section-title {
+  font-family: "Geist Mono", monospace;
+  font-weight: 600;
+}
+
+.nav-text {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 500;
+}
+
+/* Light mode: blue border, dark mode: keep white/subtle border */
+.border-theme {
+  border-color: #0970a4;
+}
+.dark .border-theme {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Faded accent background on hover */
+.hover-bg-accent:hover {
+  background-color: rgba(9, 112, 164, 0.12);
+}
+.dark .hover-bg-accent:hover {
+  background-color: rgba(234, 87, 15, 0.12);
+}
+
+/* Hover border brighten - hover-border-theme and hover-border-accent are identical */
+.hover-border-theme:hover,
+.hover-border-accent:hover {
+  border-color: #0970a4;
+}
+.dark .hover-border-theme:hover,
+.dark .hover-border-accent:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Tech tag background */
+.bg-tag {
+  background-color: rgba(9, 112, 164, 0.15);
+}
+.dark .bg-tag {
+  background-color: rgba(234, 87, 15, 0.2);
+}
+.bg-tag:hover {
+  background-color: rgba(9, 112, 164, 0.25);
+}
+.dark .bg-tag:hover {
+  background-color: rgba(234, 87, 15, 0.35);
 }
 
 @keyframes blink {

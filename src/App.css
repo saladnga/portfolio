@@ -1,29 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: oklch(95% 0 0);
-  --color-foreground: oklch(15% 0 0);
+  --color-background: oklch(100% 0 0);
+  --color-foreground: #111111;
   --color-border: oklch(90% 0 0);
   --color-ring: oklch(80% 0 0);
 
   --color-background-dark: #121212;
-  --color-foreground-dark: oklch(85% 0 0);
+  --color-foreground-dark: #f9f3e5;
   --color-border-dark: oklch(20% 0 0);
   --color-ring-dark: oklch(30% 0 0);
 
-  --color-accent: oklch(70% 0.18 50);
-  --color-accent-dark: oklch(60% 0.2 270);
+  --color-accent: #0970a4;
+  --color-accent-dark: #ea570f;
 
   /* Accordion animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
   /* Badge colors */
-  --color-primary: #ea580c;
+  --color-primary: #ea570f;
   --color-primary-foreground: #ffffff;
-  
-  /* Light mode border */
-  --color-badge-border: #c2410c;
+
+  --color-badge-border: #0970a4;
   --color-badge-border-dark: #9a3412;
 }
 
@@ -33,7 +32,7 @@
   --color-border: var(--color-border-dark);
   --color-ring: var(--color-ring-dark);
   --color-accent: var(--color-accent-dark);
-  --color-badge-border: #ea580c;
+  --color-badge-border: #ea570f;
   --color-badge-border-dark: #7c2d12;
 }
 
@@ -74,17 +73,5 @@ body {
   }
   to {
     height: 0;
-  }
-}
-
-@keyframes blink {
-  0%,
-  50%,
-  100% {
-    opacity: 1;
-  }
-  25%,
-  75% {
-    opacity: 0;
   }
 }

@@ -2,6 +2,13 @@ import { useState, useEffect } from "react";
 import Toggle from "./Toggle";
 import { FileUserIcon, HomeIcon } from "lucide-react";
 
+const timeOptions: Intl.DateTimeFormatOptions = {
+  timeZone: "America/Chicago",
+  hour12: false,
+  hour: "2-digit",
+  minute: "2-digit",
+};
+
 const Navigation = () => {
   const [time, setTime] = useState(new Date());
 
@@ -25,12 +32,7 @@ const Navigation = () => {
     }
   };
 
-  const formattedTime = time.toLocaleTimeString("en-US", {
-    timeZone: "America/Chicago",
-    hour12: false,
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const formattedTime = time.toLocaleTimeString("en-US", timeOptions);
 
   const [hours, minutes] = formattedTime.split(":");
 
@@ -48,18 +50,16 @@ const Navigation = () => {
       <div className="flex-1" />
       <div className="flex justify-center gap-3 md:gap-5">
         <div className="flex flex-col justify-center items-center px-2 rounded-lg font-semibold pointer-events-none">
-          <p className="text-sm text-orange-500 font-['Doto',sans-serif] font-extrabold">
-            CT
-          </p>
+          <p className="text-sm text-accent nav-text font-extrabold">CT</p>
           <div className="flex flex-col justify-center items-center rounded-lg font-semibold">
             <div className="flex items-center justify-center gap-1">
-              <span className="text-xs text-orange-500 font-['Doto',sans-serif] font-extrabold">
+              <span className="text-xs text-accent nav-text font-extrabold">
                 {hours}
               </span>
-              <span className="text-xs text-orange-500 font-['Doto',sans-serif] font-extrabold animate-blink">
+              <span className="text-xs text-accent nav-text font-extrabold animate-blink">
                 :
               </span>
-              <span className="text-xs text-orange-500 font-['Doto',sans-serif] font-extrabold">
+              <span className="text-xs text-accent nav-text font-extrabold">
                 {minutes}
               </span>
             </div>
@@ -70,34 +70,28 @@ const Navigation = () => {
 
         <button
           onClick={scrollToTop}
-          className="flex flex-col justify-center items-center py-1 px-2 rounded-lg cursor-pointer transition-all text-orange-500 hover:bg-white/20 dark:hover:bg-white/10 hover:backdrop-blur-md"
+          className="flex flex-col justify-center items-center py-1 px-2 rounded-lg cursor-pointer transition-all text-accent hover:bg-white/20 dark:hover:bg-white/10 hover:backdrop-blur-md"
         >
           <HomeIcon className="w-6 h-6" />
-          <p className="text-xs text-orange-500 font-['Doto',sans-serif] font-extrabold">
-            Home
-          </p>
+          <p className="text-xs text-accent nav-text font-extrabold">Home</p>
         </button>
 
         <a
           href="https://drive.google.com/file/d/1UI7F4Ry4hGppl725mrZsw5AIu0m4-qU6/view?usp=sharing"
           target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col justify-center items-center py-1 px-2 rounded-lg cursor-pointer transition-all text-accent hover:bg-white/20 dark:hover:bg-white/10 hover:backdrop-blur-md"
         >
-          <button className="flex flex-col justify-center items-center py-1 px-2 rounded-lg cursor-pointer transition-all text-orange-500 hover:bg-white/20 dark:hover:bg-white/10 hover:backdrop-blur-md">
-            <FileUserIcon className="w-6 h-6" />
-            <p className="text-xs text-orange-500 font-['Doto',sans-serif] font-extrabold">
-              Resume
-            </p>
-          </button>
+          <FileUserIcon className="w-6 h-6" />
+          <p className="text-xs text-accent nav-text font-extrabold">Resume</p>
         </a>
 
         <div className="h-10 w-px bg-white/20 dark:bg-white/10 my-auto"></div>
 
-        <button className="flex flex-col justify-center items-center py-1 px-2 rounded-lg cursor-pointer transition-all text-orange-500 hover:bg-white/20 dark:hover:bg-white/10 hover:backdrop-blur-md">
+        <div className="flex flex-col justify-center items-center py-1 px-2 rounded-lg transition-all text-accent hover:bg-white/20 dark:hover:bg-white/10 hover:backdrop-blur-md">
           <Toggle />
-          <p className="text-xs text-orange-500 font-['Doto',sans-serif] font-extrabold">
-            Theme
-          </p>
-        </button>
+          <p className="text-xs text-accent nav-text font-extrabold">Theme</p>
+        </div>
       </div>
     </div>
   );

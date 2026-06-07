@@ -1,52 +1,139 @@
-const skills = [
-  "Python",
-  "TypeScript",
-  "JavaScript",
-  "React",
-  "Next.js",
-  "TensorFlow",
-  "PyTorch",
-  "Pandas",
-  "Numpy",
-  "FastAPI",
-  "MySQL",
-  "Supabase",
-  "PostgreSQL",
-  "LangChain",
-  "LLMs",
-  "C/C++",
-  "Flutter",
-  "Dart",
-  "AWS",
-  "Airflow",
-  "ChromaDB",
-  "Docker",
-  "GitHub Actions",
-  "Vercel",
-  "Render",
-  "Figma",
-  "HTML/CSS",
-];
-
 import { Badge } from "@/components/ui/badge";
+import PageContainer from "./PageContainer";
+import SectionTitle from "./SectionTitle";
+import {
+  SiPython,
+  SiTypescript,
+  SiJavascript,
+  SiDart,
+  SiReact,
+  SiNextdotjs,
+  SiFlutter,
+  SiFastapi,
+  SiFirebase,
+  SiMysql,
+  SiPostgresql,
+  SiTensorflow,
+  SiPytorch,
+  SiLangchain,
+  SiDocker,
+  SiGithubactions,
+  SiVercel,
+  SiCplusplus,
+  SiDjango,
+  SiNestjs,
+  SiNuxt,
+  SiTailwindcss,
+  SiSupabase,
+  SiOpenaigym,
+  SiGooglegemini,
+  SiAnthropic,
+  SiOllama,
+  SiIcloud,
+  SiMetabase,
+  SiAntdesign,
+  SiFlask,
+  SiRender,
+} from "@icons-pack/react-simple-icons";
+import type React from "react";
+
+type Skill = {
+  name: string;
+  icon?: React.ReactNode;
+};
+
+const skillCategories: Record<string, Skill[]> = {
+  Languages: [
+    { name: "Python", icon: <SiPython /> },
+    {
+      name: "TypeScript",
+      icon: <SiTypescript />,
+    },
+    {
+      name: "JavaScript",
+      icon: <SiJavascript />,
+    },
+    {
+      name: "C++",
+      icon: <SiCplusplus />,
+    },
+    {
+      name: "Dart",
+      icon: <SiDart />,
+    },
+  ],
+  Frontend: [
+    { name: "React", icon: <SiReact /> },
+    { name: "Next.js", icon: <SiNextdotjs /> },
+    { name: "Flutter", icon: <SiFlutter /> },
+    { name: "Nuxt", icon: <SiNuxt /> },
+    { name: "TailwindCSS", icon: <SiTailwindcss /> },
+    { name: "Ant Design", icon: <SiAntdesign /> },
+  ],
+  Backend: [
+    { name: "FastAPI", icon: <SiFastapi /> },
+    { name: "Firebase", icon: <SiFirebase /> },
+    { name: "Django", icon: <SiDjango /> },
+    { name: "NestJS", icon: <SiNestjs /> },
+    { name: "Flask", icon: <SiFlask /> },
+  ],
+  Database: [
+    { name: "Supabase", icon: <SiSupabase /> },
+    { name: "MySQL", icon: <SiMysql /> },
+    { name: "PostgreSQL", icon: <SiPostgresql /> },
+    { name: "ChromaDB", icon: <SiMetabase /> },
+  ],
+  "AI/ML": [
+    { name: "TensorFlow", icon: <SiTensorflow /> },
+    { name: "PyTorch", icon: <SiPytorch /> },
+    { name: "LangChain", icon: <SiLangchain /> },
+    {
+      name: "LLMs",
+      icon: (
+        <>
+          <SiOpenaigym /> <SiGooglegemini /> <SiAnthropic /> <SiOllama />
+        </>
+      ),
+    },
+  ],
+  DevOps: [
+    { name: "AWS", icon: <SiIcloud /> },
+    { name: "Docker", icon: <SiDocker /> },
+    { name: "GitHub Actions", icon: <SiGithubactions /> },
+    { name: "Vercel", icon: <SiVercel /> },
+    { name: "Render", icon: <SiRender /> },
+  ],
+};
+
 export default function Skills() {
   return (
     <div>
-      <div className="w-full md:w-3/4 lg:w-1/2 mx-auto px-4 md:px-0">
-        <div className="text-2xl md:text-4xl font-semibold tracking-widest text-left mb-6 md:mb-10">
-          SKILLS
-        </div>
-        <div className="flex w-full flex-wrap justify-start gap-2">
-          {skills.map((skill) => (
-            <Badge
-              className="text-xs md:text-sm cursor-pointer transition-all duration-100 border-b-4 border-r-4 border-orange-600 dark:border-orange-700 active:border-b-2 active:border-r-2 hover:scale-105"
-              key={skill}
+      <PageContainer>
+        <SectionTitle>SKILLS</SectionTitle>
+        <div>
+          {Object.entries(skillCategories).map(([category, skills]) => (
+            <div
+              key={category}
+              className="flex w-full flex-wrap justify-start gap-2 mb-3"
             >
-              {skill}
-            </Badge>
+              <h3 className="text-base md:text-lg font-semibold">
+                {category}:{" "}
+              </h3>
+              <div className="flex flex-wrap gap-1">
+                {skills.map((skill) => (
+                  <Badge
+                    key={skill.name}
+                    className="text-xs md:text-sm cursor-pointer transition-all duration-100 hover:scale-105 border border-theme hover-border-accent text-foreground hover:text-accent"
+                  >
+                    {skill.icon}
+                    {skill.name}
+                  </Badge>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
-      </div>
+      </PageContainer>
     </div>
   );
 }

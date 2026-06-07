@@ -15,9 +15,9 @@ const Toggle = () => {
   return (
     <button
       onClick={() => setDark((v) => !v)}
-      className="w-6 h-6 relative transition-all duration-300"
+      className="w-6 h-6 relative transition-all duration-300 text-inherit cursor-pointer"
     >
-      <div className="cursor-pointer">
+      <div>
         <Sun
           className={`absolute inset-0 transition-all duration-300 ${
             dark
