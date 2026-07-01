@@ -8,6 +8,7 @@ type Award = {
 };
 
 const awards: Award[] = [
+  { time: "Jun 2026", title: "Chancellor's List" },
   { time: "May 2026", title: "Magna Cum Laude" },
   { time: "Jan 2026", title: "Provost's List" },
   { time: "Aug 2025", title: "Chancellor's List" },
