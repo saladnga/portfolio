@@ -1,22 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: oklch(100% 0 0);
-  --color-foreground: #111111;
+  --font-sans: "Space Grotesk Variable", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", monospace;
+
+  --color-background: #f4f2ed;
+  --color-foreground: #121212;
   --color-border: oklch(90% 0 0);
   --color-ring: oklch(80% 0 0);
+  --color-dim: rgb(18 18 18 / 0.55);
+  --color-line: rgb(18 18 18 / 0.14);
+  --color-faint: rgb(18 18 18 / 0.08);
+  --color-panel: rgb(18 18 18 / 0.03);
 
-  --color-background-dark: #121212;
-  --color-foreground-dark: #f9f3e5;
+  --color-background-dark: #0b0b0c;
+  --color-foreground-dark: #f2f0ec;
   --color-border-dark: oklch(20% 0 0);
   --color-ring-dark: oklch(30% 0 0);
-
+  --color-dim-dark: rgb(242 240 236 / 0.52);
+  --color-line-dark: rgb(242 240 236 / 0.16);
+  --color-faint-dark: rgb(242 240 236 / 0.1);
+  --color-panel-dark: rgb(242 240 236 / 0.04);
   --color-accent: #0970a4;
   --color-accent-dark: #ea570f;
+  --color-accent-foreground: #ffffff;
+  --color-accent-foreground-dark: #0b0b0c;
 
   /* Accordion animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-blip: blip 2.4s ease-in-out infinite;
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-magnetic-burst: magnetic-burst-dot 0.55s ease-out forwards;
 
   /* Badge colors */
   --color-primary: #ea570f;
@@ -32,8 +47,13 @@
   --color-border: var(--color-border-dark);
   --color-ring: var(--color-ring-dark);
   --color-accent: var(--color-accent-dark);
+  --color-accent-foreground: var(--color-accent-foreground-dark);
   --color-badge-border: #ea570f;
   --color-badge-border-dark: #7c2d12;
+  --color-dim: var(--color-dim-dark);
+  --color-line: var(--color-line-dark);
+  --color-faint: var(--color-faint-dark);
+  --color-panel: var(--color-panel-dark);
 }
 
 .dark body::before {
@@ -56,6 +76,26 @@ body {
     rgba(255, 244, 220, 0.02),
     transparent 70%
   );
+  scrollbar-color: var(--color-accent) var(--color-background);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent);
+  border-radius: 99px;
+  border: 3px solid var(--color-background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.15);
 }
 
 @keyframes accordion-down {
@@ -73,5 +113,76 @@ body {
   }
   to {
     height: 0;
+  }
+}
+
+@keyframes blip {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 7ch;
+  }
+}
+
+@keyframes cursor-blink {
+  0%,
+  100% {
+    border-color: currentColor;
+  }
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes magnetic-burst-dot {
+  from {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(26px)
+      scale(0.3);
+    opacity: 0;
+  }
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  width: 8ch;
+  border-right: 0.08em solid currentColor;
+  animation:
+    typewriter 1.2s steps(8, end) 0.4s both,
+    cursor-blink 0.8s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blip,
+  .animate-marquee,
+  .animate-magnetic-burst,
+  .typewriter {
+    animation: none;
   }
 }

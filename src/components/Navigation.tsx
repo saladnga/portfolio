@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import Toggle from "./Toggle";
-import { FileUserIcon, HomeIcon } from "lucide-react";
+import { profile } from "@/data/profile";
+import { Menu, X } from "lucide-react";
+import { useTheme } from "@/context/useTheme";
+import logoLight from "../assets/logo/logo-light.png";
+import logoDark from "../assets/logo/logo-dark.png";
 
 const timeOptions: Intl.DateTimeFormatOptions = {
   timeZone: "America/Chicago",
@@ -9,9 +13,17 @@ const timeOptions: Intl.DateTimeFormatOptions = {
   minute: "2-digit",
 };
 
-const Navigation = () => {
-  const [time, setTime] = useState(new Date());
+const navLinks = [
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
 
+export default function Navigation() {
+  const { isDark } = useTheme();
+  const [time, setTime] = useState(new Date());
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
@@ -21,80 +33,107 @@ const Navigation = () => {
       clearInterval(timer);
     };
   }, []);
-
-  const scrollToTop = () => {
-    const container = document.getElementById("scroll-container");
-    if (container) {
-      container.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-  };
-
   const formattedTime = time.toLocaleTimeString("en-US", timeOptions);
-
   const [hours, minutes] = formattedTime.split(":");
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const [activeId, setActiveId] = useState("");
+
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.getElementById(link.href.slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px" },
+    );
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const mobileLinks = navLinks.filter((link) => link.href !== "#skills");
+
   return (
-    <div
-      className="
-        fixed top-3 left-1/2 -translate-x-1/2 z-50
-        flex justify-between items-center px-6 md:px-5 py-1 w-auto rounded-xl
-        backdrop-blur-sm
-        bg-white/10 dark:bg-white/5
-        border border-white/20 dark:border-white/10
-        shadow-sm
-      "
+    <header
+      className={`sticky top-0 z-50 border-b bg-background px-16 py-5.5 transition-colors ${scrolled ? "border-line" : "border-transparent"}`}
     >
-      <div className="flex-1" />
-      <div className="flex justify-center gap-3 md:gap-5">
-        <div className="flex flex-col justify-center items-center px-2 rounded-lg font-semibold pointer-events-none">
-          <p className="text-sm text-accent nav-text font-extrabold">CT</p>
-          <div className="flex flex-col justify-center items-center rounded-lg font-semibold">
-            <div className="flex items-center justify-center gap-1">
-              <span className="text-xs text-accent nav-text font-extrabold">
-                {hours}
-              </span>
-              <span className="text-xs text-accent nav-text font-extrabold animate-blink">
-                :
-              </span>
-              <span className="text-xs text-accent nav-text font-extrabold">
-                {minutes}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div className="h-10 w-px bg-white/20 dark:bg-white/10 my-auto"></div>
-
-        <button
-          onClick={scrollToTop}
-          className="flex flex-col justify-center items-center py-1 px-2 rounded-lg cursor-pointer transition-all text-accent hover:bg-white/20 dark:hover:bg-white/10 hover:backdrop-blur-md"
-        >
-          <HomeIcon className="w-6 h-6" />
-          <p className="text-xs text-accent nav-text font-extrabold">Home</p>
-        </button>
-
+      <div className="flex items-center justify-between">
         <a
-          href="https://drive.google.com/file/d/1UI7F4Ry4hGppl725mrZsw5AIu0m4-qU6/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col justify-center items-center py-1 px-2 rounded-lg cursor-pointer transition-all text-accent hover:bg-white/20 dark:hover:bg-white/10 hover:backdrop-blur-md"
+          href="/"
+          className="flex items-center gap-2.75 hover:opacity-90 transition-all"
         >
-          <FileUserIcon className="w-6 h-6" />
-          <p className="text-xs text-accent nav-text font-extrabold">Resume</p>
+          <img
+            src={isDark ? logoDark : logoLight}
+            alt={profile.name}
+            className="h-7 w-7 rounded-full object-cover"
+          />
         </a>
 
-        <div className="h-10 w-px bg-white/20 dark:bg-white/10 my-auto"></div>
-
-        <div className="flex flex-col justify-center items-center py-1 px-2 rounded-lg transition-all text-accent hover:bg-white/20 dark:hover:bg-white/10 hover:backdrop-blur-md">
+        {/* Desktop */}
+        <nav className="hidden items-center gap-6 font-mono text-[11px] font-medium uppercase tracking-widest md:flex">
+          <span className="text-dim">
+            CT {hours}
+            <span className="animate-blink">:</span>
+            {minutes}
+          </span>
+          <span className="h-3.5 w-px bg-line" />
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              key={link.href}
+              className={`text-dim transition-colors hover:text-foreground ${activeId === link.href.slice(1) ? "text-foreground" : "text-dim"}`}
+            >
+              {link.label}
+            </a>
+          ))}
+          <span className="h-3.5 w-px bg-line" />
           <Toggle />
-          <p className="text-xs text-accent nav-text font-extrabold">Theme</p>
+        </nav>
+
+        {/* Mobile */}
+        <div className="flex items-center gap-2 md:hidden">
+          <Toggle />
+          <button
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-dim transition-colors hover:border-foreground hover:text-foreground"
+          >
+            {mobileOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
+          </button>
         </div>
       </div>
-    </div>
-  );
-};
 
-export default Navigation;
+      {mobileOpen && (
+        <nav className="mt-4 flex flex-col gap-1 border-t border-line pt-4 md:hidden">
+          {mobileLinks.map((link) => (
+            <a
+              href={link.href}
+              key={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="flex min-h-11 items-center font-mono text-xs uppercase tracking-widest text-dim transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      )}
+    </header>
+  );
+}
