@@ -1,33 +1,26 @@
-import { useEffect, useState } from "react";
+import { useTheme } from "@/context/useTheme";
 import { Moon, Sun } from "lucide-react";
 
 const Toggle = () => {
-  const [dark, setDark] = useState(() => {
-    const savedTheme = localStorage.getItem("theme");
-    return savedTheme ? savedTheme === "dark" : true;
-  });
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-    localStorage.setItem("theme", dark ? "dark" : "light");
-  }, [dark]);
+  const { isDark, toggleTheme } = useTheme();
 
   return (
     <button
-      onClick={() => setDark((v) => !v)}
-      className="w-6 h-6 relative transition-all duration-300 text-inherit cursor-pointer"
+      onClick={toggleTheme}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      className="relative flex h-11 w-11 items-center justify-center text-inherit transition-opacity hover:opacity-70 cursor-pointer"
     >
-      <div>
+      <div className="relative h-6 w-6">
         <Sun
           className={`absolute inset-0 transition-all duration-300 ${
-            dark
+            isDark
               ? "rotate-90 scale-0 opacity-0"
               : "rotate-0 scale-100 opacity-100"
           }`}
         />
         <Moon
           className={`absolute inset-0 transition-all duration-300 ${
-            dark
+            isDark
               ? "rotate-0 scale-100 opacity-100"
               : "-rotate-90 scale-0 opacity-0"
           }`}
