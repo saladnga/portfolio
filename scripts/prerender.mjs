@@ -16,7 +16,24 @@ if (!url) {
   throw new Error("Could not resolve preview server URL");
 }
 
-const browser = await chromium.launch();
+// Vercel's build container is missing the shared libraries (libnspr4, etc.)
+// that Playwright's own downloaded Chromium needs, so on Vercel we launch
+// @sparticuz/chromium instead — a Chromium build compiled specifically to
+// run inside serverless/Lambda-style containers. Locally and in CI (GitHub
+// Actions' Ubuntu runner has the system deps via `playwright install --with-deps`)
+// Playwright's own bundled Chromium works fine as-is.
+const launchOptions = process.env.VERCEL
+  ? await (async () => {
+      const { default: sparticuzChromium } = await import("@sparticuz/chromium");
+      return {
+        executablePath: await sparticuzChromium.executablePath(),
+        args: sparticuzChromium.args,
+        headless: true,
+      };
+    })()
+  : {};
+
+const browser = await chromium.launch(launchOptions);
 const page = await browser.newPage();
 
 try {
