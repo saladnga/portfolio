@@ -5,9 +5,12 @@ import Reveal from "@/components/Reveal";
 
 export default function Experience() {
   return (
-    <section id="experience" className="snap-start scroll-mt-20">
+    <section
+      id="experience"
+      className="snap-start scroll-mt-20 px-5.5 md:px-16"
+    >
       <SectionHeader label="02 - Work Experience" />
-      <div className="px-5.5 md:px-16">
+      <div>
         {experiences.map((experience, i) => {
           const isCurrent = experience.time.includes("Present");
           return (

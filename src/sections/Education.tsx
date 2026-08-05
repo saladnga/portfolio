@@ -6,10 +6,10 @@ export default function Education() {
   return (
     <div id="education" className="scroll-mt-20">
       <SectionHeader label="03 - Education" />
-      <div className="px-5.5 md:px-0">
+      <div>
         {education.map((edu, i) => (
           <Reveal key={edu.school} delay={i * 0.04}>
-            <div className="group border-t border-line py-5.5 transition-colors hover:bg-panel">
+            <div className="group border-t border-line py-5.5 transition-colors duration-300 md:hover:bg-panel">
               <div className="flex justify-between font-mono text-[11px] text-dim">
                 <span>{edu.school.toUpperCase()}</span>
                 <span className="text-accent">{edu.years}</span>
@@ -21,7 +21,7 @@ export default function Education() {
                   loading="lazy"
                   className="h-12 w-12 shrink-0 rounded-sm border border-line bg-panel object-contain p-1 grayscale transition-all group-hover:grayscale-0"
                 />
-                <div className="text-2xl font-medium tracking-tight transition-colors group-hover:text-accent md:text-[26px]">
+                <div className="text-2xl font-medium tracking-tight transition-colors duration-300 group-hover:text-accent md:text-[26px]">
                   {edu.degree}
                 </div>
               </div>

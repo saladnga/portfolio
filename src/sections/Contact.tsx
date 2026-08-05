@@ -47,7 +47,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-between rounded-sm border border-line px-5 py-4.5
-font-mono text-xs uppercase tracking-[0.08em] text-foreground transition-colors hover:border-foreground hover:bg-panel"
+font-mono text-xs uppercase tracking-[0.08em] text-foreground transition-colors hover:border-accent hover:bg-accent/5 hover:text-accent"
             >
               <span className="flex items-center gap-2">
                 {social.icon?.map((Icon, i) => (
