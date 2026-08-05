@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import Toggle from "./Toggle";
 import { profile } from "@/data/profile";
 import { Menu, X } from "lucide-react";
@@ -68,7 +69,7 @@ export default function Navigation() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-background px-16 py-5.5 transition-colors ${scrolled ? "border-line" : "border-transparent"}`}
+      className={`sticky top-0 z-50 border-b bg-background px-5.5 md:px-16 py-5.5 transition-colors ${scrolled ? "border-line" : "border-transparent"}`}
     >
       <div className="flex items-center justify-between">
         <a
@@ -109,7 +110,7 @@ export default function Navigation() {
           <button
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-dim transition-colors hover:border-foreground hover:text-foreground"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-dim transition-colors hover:border-foreground hover:text-foreground cursor-pointer"
           >
             {mobileOpen ? (
               <X className="h-5 w-5" />
@@ -120,20 +121,30 @@ export default function Navigation() {
         </div>
       </div>
 
-      {mobileOpen && (
-        <nav className="mt-4 flex flex-col gap-1 border-t border-line pt-4 md:hidden">
-          {mobileLinks.map((link) => (
-            <a
-              href={link.href}
-              key={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="flex min-h-11 items-center font-mono text-xs uppercase tracking-widest text-dim transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-      )}
+      <AnimatePresence initial={false}>
+        {mobileOpen && (
+          <motion.nav
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.65, 0, 0.35, 1] }}
+            className="mt-4 overflow-hidden border-t border-line md:hidden"
+          >
+            <div className="mt-4 flex flex-col gap-1 pb-1">
+              {mobileLinks.map((link) => (
+                <a
+                  href={link.href}
+                  key={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex min-h-11 items-center font-mono text-xs uppercase tracking-widest text-dim transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

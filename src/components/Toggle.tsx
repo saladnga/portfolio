@@ -8,7 +8,7 @@ const Toggle = () => {
     <button
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="relative flex h-11 w-11 items-center justify-center text-inherit transition-opacity hover:opacity-70 cursor-pointer"
+      className="relative flex h-11 w-11 items-center justify-center hover:text-inherit transition-opacity hover:opacity-70 cursor-pointer text-dim"
     >
       <div className="relative h-6 w-6">
         <Sun

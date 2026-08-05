@@ -5,13 +5,16 @@ import Reveal from "@/components/Reveal";
 
 export default function Projects() {
   return (
-    <section id="projects" className="snap-start scroll-mt-20">
+    <section
+      id="projects"
+      className="snap-start scroll-mt-20 px-5.5 md:px-16"
+    >
       <SectionHeader
         label="01 - Projects"
         metaLabel="github.com/saladnga ↗"
         metaHref="https://github.com/saladnga"
       />
-      <div className="px-5.5 md:px-16">
+      <div>
         {projects.map((project, i) => (
           <Reveal key={project.link} delay={i * 0.04}>
             <Row
