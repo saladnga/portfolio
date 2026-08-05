@@ -10,9 +10,11 @@ export default function Education() {
         {education.map((edu, i) => (
           <Reveal key={edu.school} delay={i * 0.04}>
             <div className="group border-t border-line py-5.5 transition-colors duration-300 md:hover:bg-panel">
-              <div className="flex justify-between font-mono text-[11px] text-dim">
+              <div className="grid grid-cols-[1fr_auto] items-baseline gap-3 font-mono text-[11px] text-dim">
                 <span>{edu.school.toUpperCase()}</span>
-                <span className="text-accent">{edu.years}</span>
+                <span className="text-accent whitespace-nowrap">
+                  {edu.years}
+                </span>
               </div>
               <div className="mt-2.5 flex items-center gap-3">
                 <img
