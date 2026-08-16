@@ -16,7 +16,7 @@ export const education: EducationEntry[] = [
   {
     school: "Troy University",
     degree: "B.S. in Computer Science",
-    years: "2024 - 2026",
+    years: "2022 - 2026",
     honors: "Magna Cum Laude",
     affiliations: ["CodePath", "Troy Hack (2024, 2025)"],
     logo: troy,

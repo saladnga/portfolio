@@ -22,8 +22,8 @@ export default function App() {
       <main>
         <Hero />
         <Marquee />
-        <Projects />
         <Experience />
+        <Projects />
         <div className="snap-start grid grid-cols-1 md:grid-cols-2 gap-16 px-5.5 pt-14 md:px-16">
           <Education />
           <Awards />

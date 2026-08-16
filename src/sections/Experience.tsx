@@ -9,7 +9,7 @@ export default function Experience() {
       id="experience"
       className="snap-start scroll-mt-20 px-5.5 md:px-16"
     >
-      <SectionHeader label="02 - Work Experience" />
+      <SectionHeader label="01 - Experience" />
       <div>
         {experiences.map((experience, i) => {
           const isCurrent = experience.time.includes("Present");
@@ -27,17 +27,24 @@ export default function Experience() {
                 </div>
                 <div>
                   <div className="flex items-center gap-3">
-                    <img
-                      src={experience.company_thumbnail}
-                      alt={experience.company_name}
-                      loading="lazy"
-                      className="h-12 w-12 shrink-0 rounded-sm border border-line bg-panel object-contain p-1 grayscale transition-all group-hover:grayscale-0"
-                    />
+                    <a
+                      href={experience.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={experience.company_thumbnail}
+                        alt={experience.company_name}
+                        loading="lazy"
+                        className="h-12 w-12 shrink-0 rounded-sm border border-line bg-panel object-contain p-1 grayscale transition-all group-hover:grayscale-0"
+                      />
+                    </a>
+
                     <div>
-                      <div className="text-xl md:text-[25px] font-medium transition-colors md:group-hover:text-accent">
+                      <div className="text-xl md:text-[25px] font-medium transition-colors">
                         {experience.position}
                       </div>
-                      <div className="mt-1 font-light text-dim">
+                      <div className="mt-1 font-light">
                         {experience.company_name}
                       </div>
                     </div>
@@ -45,7 +52,7 @@ export default function Experience() {
                   <div className="mt-2 flex items-start justify-between gap-4">
                     <ul className="space-y-1 text-[15px] font-light text-dim">
                       {(experience.bullets ?? []).map((bullet, idx) => (
-                        <li key={idx} className="flex gap-2">
+                        <li key={idx} className="flex gap-5 mb-3">
                           <span className="text-accent">-</span>
                           <span>{bullet}</span>
                         </li>
@@ -68,7 +75,7 @@ export default function Experience() {
                     {(experience.tags ?? []).map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-line px-2.5 py-1.5 font-mono text-[10px] text-dim"
+                        className="rounded-full border border-line px-2.5 py-1.5 font-mono text-[10px] text-dim transition-colors duration-300 hover:text-accent hover:border-accent hover:bg-accent/5 cursor-pointer"
                       >
                         {tag}
                       </span>

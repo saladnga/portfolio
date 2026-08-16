@@ -2,7 +2,7 @@ import { GitHubCalendar } from "react-github-calendar";
 
 const calendarTheme = {
   light: ["#e0f0fa", "#a8d4ef", "#5ab1e3", "#1a8fce", "#0970a4"],
-  dark: ["#151a16", "#1e3f2a", "#2f7048", "#5cb679", "#8cd695"],
+  dark: ["#150a0a", "#371012", "#6b0f13", "#b80a11", "#ff000b"],
 };
 
 export default function GithubActivity({ isDark }: { isDark: boolean }) {

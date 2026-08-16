@@ -10,7 +10,7 @@ export const projects: Project[] = [
     title: "STD Risk Assistant Chatbot ",
     description:
       "A full-stack AI-powered health assistant designed to provide evidence-based sexual health information to students.",
-    link: "https://github.com/saladnga/TroyHealthLink-STD-Information-and-Risk-Assistant-Chatbot",
+    link: "https://healthlink-std-assistant-chatbot.vercel.app/",
     technologies: [
       "React",
       "FastAPI",
