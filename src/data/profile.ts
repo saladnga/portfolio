@@ -3,6 +3,7 @@ import {
   GitHubLogoIcon,
   TwitterLogoIcon,
   DiscordLogoIcon,
+  FileIcon,
 } from "@radix-ui/react-icons";
 
 import type { ComponentType } from "react";
@@ -14,6 +15,11 @@ export type Social = {
 };
 
 const socials: Social[] = [
+  {
+    icon: [FileIcon],
+    username: "Resume",
+    link: "https://drive.google.com/file/d/16u1GllC2Y9cc1_VOp7m6OP8p7c5hMrw1/view?usp=sharing",
+  },
   {
     icon: [GitHubLogoIcon],
     username: "saladnga",
@@ -40,7 +46,7 @@ export const profile = {
   name: "Vu A. Hoang",
   tagline: {
     pre: "i'm vu. i make ",
-    accent: "software.",
+    accent: "software",
   },
   availability: "Open to software engineering roles",
   blurb: "Full-stack developer, focused on applied AI.",

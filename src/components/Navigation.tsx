@@ -15,8 +15,8 @@ const timeOptions: Intl.DateTimeFormatOptions = {
 };
 
 const navLinks = [
-  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
   { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },

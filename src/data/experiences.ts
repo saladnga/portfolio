@@ -7,6 +7,7 @@ export type Experience = {
   company_thumbnail: string;
   position: string;
   company_name: string;
+  url: string;
   time: string;
   bullets?: string[];
   tags?: string[];
@@ -18,6 +19,7 @@ export const experiences: Experience[] = [
     company_thumbnail: cbi,
     position: "Research Software Engineer",
     company_name: "Conrad Blucher Institute for Surveying and Science",
+    url: "https://www.conradblucherinstitute.org/",
     time: "Jun. 2026 - Present",
     bullets: [
       "Engineered an automated Python time-series pipeline (Pandas, NumPy, Scikit-learn) to synchronize dual-sensor data across 19 Texas tide stations.",
@@ -39,6 +41,7 @@ export const experiences: Experience[] = [
     company_thumbnail: isods,
     position: "Software Engineer Intern",
     company_name: "The George Washington Institute at ISODS",
+    url: "https://portal.isods.org/",
     time: "Mar. 2025 - May. 2026",
     bullets: [
       "Engineered an AI-powered chatbot, implementing multi-format document ingestion and a chat interruption feature allowing users to redirect the model mid-response instead of waiting for generation to finish.",
@@ -51,6 +54,7 @@ export const experiences: Experience[] = [
   {
     company_thumbnail: nau,
     position: "Software Engineer Intern",
+    url: "https://naucode.io/",
     company_name: "NAUCode",
     time: "May. 2025 - Oct. 2025",
     bullets: [
@@ -64,6 +68,7 @@ export const experiences: Experience[] = [
     company_thumbnail: gdsc,
     position: "Software Engineer",
     company_name: "Google Developer Group",
+    url: "https://gdgoc.org/",
     time: "Sep. 2023 - Aug. 2024",
     tags: ["NEXT.JS", "TAILWIND"],
     bullets: [

@@ -10,7 +10,7 @@ export default function Projects() {
       className="snap-start scroll-mt-20 px-5.5 md:px-16"
     >
       <SectionHeader
-        label="01 - Projects"
+        label="02 - Projects"
         metaLabel="github.com/saladnga ↗"
         metaHref="https://github.com/saladnga"
       />
@@ -20,6 +20,8 @@ export default function Projects() {
             <Row
               as="a"
               href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="grid-cols-[28px_1fr] md:grid-cols-[52px_1fr_360px_40px] gap-3 md:gap-6 items-center py-4 md:py-7"
             >
               <span className="font-mono text-xs text-dim transition-colors group-hover:text-accent">
@@ -39,7 +41,7 @@ export default function Projects() {
                   {project.description}
                 </span>
               </div>
-              <span className="hidden md:flex justify-self-end text-[22px] text-accent opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0">
+              <span className="hidden md:flex justify-self-end text-[22px] opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0">
                 ↗
               </span>
             </Row>

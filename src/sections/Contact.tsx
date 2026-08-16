@@ -33,6 +33,8 @@ export default function Contact() {
           </p>
           <a
             href={`mailto:${profile.email}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-8.5 inline-block border-b-2 border-accent text-[28px] font-medium tracking-tight text-foreground transition-colors hover:text-accent md:text-[44px]"
           >
             {profile.email}

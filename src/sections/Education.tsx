@@ -12,18 +12,18 @@ export default function Education() {
             <div className="group border-t border-line py-5.5 transition-colors duration-300 md:hover:bg-panel">
               <div className="grid grid-cols-[1fr_auto] items-baseline gap-3 font-mono text-[11px] text-dim">
                 <span>{edu.school.toUpperCase()}</span>
-                <span className="text-accent whitespace-nowrap">
-                  {edu.years}
-                </span>
+                <span className="whitespace-nowrap">{edu.years}</span>
               </div>
               <div className="mt-2.5 flex items-center gap-3">
-                <img
-                  src={edu.logo}
-                  alt={edu.school}
-                  loading="lazy"
-                  className="h-12 w-12 shrink-0 rounded-sm border border-line bg-panel object-contain p-1 grayscale transition-all group-hover:grayscale-0"
-                />
-                <div className="text-2xl font-medium tracking-tight transition-colors duration-300 group-hover:text-accent md:text-[26px]">
+                <a href={edu.url} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={edu.logo}
+                    alt={edu.school}
+                    loading="lazy"
+                    className="h-12 w-12 shrink-0 rounded-sm border border-line bg-panel object-contain p-1 grayscale transition-all group-hover:grayscale-0"
+                  />
+                </a>
+                <div className="text-2xl font-medium tracking-tight transition-colors duration-300 md:text-[26px]">
                   {edu.degree}
                 </div>
               </div>
@@ -35,7 +35,7 @@ export default function Education() {
                   {edu.affiliations.map((aff) => (
                     <span
                       key={aff}
-                      className="rounded-full border border-line px-2.5 py-1.5 font-mono text-[10px] text-dim"
+                      className="rounded-full border border-line px-2.5 py-1.5 font-mono text-[10px] text-dim transition-colors duration-300 hover:text-accent hover:border-accent hover:bg-accent/5 cursor-pointer"
                     >
                       {aff}
                     </span>

@@ -1,7 +1,14 @@
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { profile } from "@/data/profile";
 import MagneticButton from "@/components/MagneticButton";
 
 export default function Hero() {
+  const [accentText] = useTypewriter({
+    words: [profile.tagline.accent],
+    loop: 1,
+    typeSpeed: 55,
+  });
+
   return (
     <div>
       <section className="relative border-b border-line px-5.5 pt-8.5 md:px-16 md:pt-16 overflow-hidden">
@@ -28,20 +35,9 @@ export default function Hero() {
             style={{ textWrap: "balance" }}
           >
             {profile.tagline.pre}
-            <em className="typewriter font-normal italic text-accent">
-              {profile.tagline.accent.split("").map((char, i, chars) => (
-                <span
-                  key={i}
-                  className={
-                    i === chars.length - 1
-                      ? "typewriter-char typewriter-char-last"
-                      : "typewriter-char"
-                  }
-                  style={{ animationDelay: `${0.4 + i * 0.09}s` }}
-                >
-                  {char}
-                </span>
-              ))}
+            <em className="font-normal italic text-accent">
+              {accentText}
+              <Cursor cursorStyle="_" />
             </em>
           </h1>
         </div>
